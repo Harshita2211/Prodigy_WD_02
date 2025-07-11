@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stopwatch App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #display {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .buttons button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #4facfe;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    .buttons button:hover {
+      background-color: #00c6ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⏱️ Stopwatch</h1>
+    <div id="display">00:00:00</div>
+    <div class="buttons">
+      <button onclick="startStop()" id="startStopBtn">Start</button>
+      <button onclick="reset()">Reset</button>
+    </div>
+  </div>
+
+  <script>
+    let timer;
+    let isRunning = false;
+    let seconds = 0;
+
+    function startStop() {
+      const btn = document.getElementById("startStopBtn");
+      if (isRunning) {
+        clearInterval(timer);
+        isRunning = false;
+        btn.innerText = "Start";
+      } else {
+        timer = setInterval(updateTime, 1000);
+        isRunning = true;
+        btn.innerText = "Pause";
+      }
+    }
+
+    function updateTime() {
+      seconds++;
+      const hrs = Math.floor(seconds / 3600);
+      const mins = Math.floor((seconds % 3600) / 60);
+      const secs = seconds % 60;
+
+      document.getElementById("display").innerText =
+        `${pad(hrs)}:${pad(mins)}:${pad(secs)}`;
+    }
+
+    function reset() {
+      clearInterval(timer);
+      seconds = 0;
+      isRunning = false;
+      document.getElementById("display").innerText = "00:00:00";
+      document.getElementById("startStopBtn").innerText = "Start";
+    }
+
+    function pad(val) {
+      return val < 10 ? "0" + val : val;
+    }
+  </script>
+</body>
+</html>
