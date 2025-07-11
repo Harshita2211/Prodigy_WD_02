@@ -12,22 +12,6 @@ It allows users to **start**, **pause**, and **reset** the timer, and is perfect
 - Fully responsive UI
 - Built with vanilla JS (no libraries)
 
----
-
-## 🖼️ Screenshot
-
-![Stopwatch Screenshot](screenshot.png) <!-- Add your screenshot image here if available -->
-
----
-
-## 🔗 Live Demo
-
-Click here to try it:  
-➡️ [https://yourusername.github.io/stopwatch-app/](https://yourusername.github.io/stopwatch-app/)  
-*(Replace with your actual GitHub username)*
-
----
-
 ## 💻 Technologies Used
 
 - HTML5
